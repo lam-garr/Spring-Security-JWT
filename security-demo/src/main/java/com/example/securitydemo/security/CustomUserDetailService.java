@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component;
 
 import com.example.securitydemo.services.UserService;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Component
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class CustomUserDetailService implements UserDetailsService{
 
     private final UserService userService;

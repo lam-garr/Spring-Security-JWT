@@ -24,11 +24,11 @@ public class AuthController {
 
     private final AuthenticationManager authenticationManager;
     
-    @GetMapping("/login")
-    public LoginRes login(){
-        //@RequestBody LoginReq req
+    @PostMapping("/login")
+    public LoginRes login(@RequestBody LoginReq req){
+        
         var authentication = authenticationManager.authenticate(
-            new UsernamePasswordAuthenticationToken("Goku", "password")
+            new UsernamePasswordAuthenticationToken(req.getUsername(), req.getPassword())
         );
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -44,7 +44,7 @@ public class AuthController {
 
     @GetMapping("/secure")
     public String secure(@AuthenticationPrincipal UserPrincipal principal){
-        return "OK! " + principal.getUserId();
+        return "Logged in as: " + principal.getUserId();
     }
 }
 
