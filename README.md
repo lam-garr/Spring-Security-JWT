@@ -1,1 +1,2 @@
-# Spring-Security-JWT
+# Description
+Example project using Spring Security with JWT
